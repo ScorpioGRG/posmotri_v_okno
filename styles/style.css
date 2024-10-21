@@ -36,3 +36,296 @@ ul,
 ol {
   list-style: none;
 }
+
+/*выше - то, что было дано в проекте, свои модификации буду записывать*/
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.page{
+  text-align:center;
+}
+
+.content {
+  display: flex;
+  height: 534px;
+  width: 1140px;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.result__video-container {
+  position: relative;
+  width: 711px;
+  height: 386px;
+  margin-bottom: 16px;
+}
+
+.result {
+width: 711px;
+height: 456px;
+text-align: left;
+}
+
+.content__details {
+  width: 399px;
+  height: 534px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content__list {
+  position: relative;
+  width: 100%;
+  height: 298px;
+  overflow: clip;
+  overflow-y: scroll;
+}
+
+.content__list::-webkit-scrollbar {
+  display: none;
+}
+
+.search-form{
+  display: flex;
+  width: 711px;
+  align-items: end;
+}
+.search-form__fieldset {
+  width:33%;
+  height: 54px;
+}
+
+.title {
+  font-family: 'Oswald';
+  text-align: left;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 94%;
+  text-transform: uppercase;
+  color: #fff;;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.content__list-item { /* (у всех, кроме последнего) - из задания, хотя по макету - у всех*/
+  margin-bottom: 33px;
+  width: 397px;
+  margin-top: 1px;
+  margin-left: 1px;
+}
+
+.content__card-link {
+  display: block;
+  text-decoration: none;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+  color: #fff;
+  text-decoration-thickness: 5%;
+  text-underline-offset: 5%;
+}
+
+.content__card-link:focus-visible {
+  outline: none;
+}
+
+.content__card-link:focus-visible > .content__video-card {
+  outline: 1px solid #fff;
+}
+
+.content__card-link:active {
+  text-decoration: none;
+}
+
+.content__card-link_current, .content__card-link:active > .content__video-card {
+  background-color: #545050;
+}
+
+.content__video-card-description-container {
+  text-align: left;
+  color: #fff;
+}
+
+.content__video-card-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  margin-top: 2px;
+
+}
+
+.content__video-card-description {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 90%;
+}
+
+.content__video-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.content__video-card-thumbnail {
+  height: 103px;
+  width: 194px;
+}
+
+.button {
+  font-family: "Fira Sans Condensed", sans-serif;
+  background-color: transparent;
+  border-color: #fff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer; /*это просто подсказка из задания ToDo*/
+}
+
+/*cостояния кнопки*/
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.button:active {
+  background-color: #545050;
+  text-decoration: none;
+}
+
+.search-form__submit-button {
+  height: 34px;
+  width: 194px;
+}
+
+.search-form__fieldset {
+  border: none;
+  font-family: 'Fira Sans Condensed';
+  padding-right: 40px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+}
+
+fieldset > label {
+  border-bottom: 1px #fff solid;
+  border-top: 1px #fff solid;
+}
+
+.search-form__textfield {
+  width: 225px;
+  background-color: transparent;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  border: none;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/*избавиться от невнятной обводки с закругленным радиусом от браузера*/
+.search-form__textfield:focus {
+  outline: none;
+}
+
+/*cостояние hover имеет прироитет над focus-visible после клика (так красивее), правильно или нет - из макета не ясно*/
+.search-form__textfield:not(.search-form__textfield:hover):focus-visible{
+  outline: 1px solid #fff;
+  outline-offset: 2px;  
+}
+
+.search-form__textfield:active{
+  outline: none;
+  outline: 1px solid #fff;
+  outline-offset: 0px;
+}
+
+.search-form__label {
+  cursor: pointer;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: none;
+}
+
+/*тут рисум псевдочекбокс*/
+.search-form__pseudo-checkbox{
+  display: inline-block;
+  margin-right: 1px;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+
+/*тут рисуем состояния псевдочекбокса и метки*/
+input[type='checkbox']:checked + .search-form__pseudo-checkbox{
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  outline:1px solid #1b1919;
+  outline-offset:-2px;
+}
+
+/*surprise! если раскликаться мышкой по "чекбоксу" - происходит выделение в смысле текста, обманем систему*/
+.search-form__label::selection, .search-form__label-text::selection {
+  background-color: transparent;
+}
+
+.search-form__label-text:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.search-form__label:has(input[type='checkbox']:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+  width: 212px;
+
+
+}
+
+.search-form__fieldset-title {
+  font-family: 'Fira Sans Condensed';
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  padding-bottom: 4px;
+}
+
+.more-button {
+  width: 395px;
+  height: 34px;
+}
+
+.more-button:focus-visible {
+  margin-bottom: 2px;
+}
