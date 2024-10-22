@@ -39,7 +39,7 @@ ol {
 
 /*выше - то, что было дано в проекте, свои модификации буду писать ниже*/
 
-/*расположить все по центру*/
+/*расположить все по центру !!! этот седектор перенести на строку 11, без дублей*/
 .page { 
   display: flex; 
   justify-items: center;
@@ -63,6 +63,8 @@ ol {
   width: 1140px;
   justify-content: space-between;
   align-items: end;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .result__video-container {
