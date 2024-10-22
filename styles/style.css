@@ -16,6 +16,9 @@ html {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  display: flex; 
+  justify-items: center;
+  align-items: center;
 }
 
 h1,
@@ -37,15 +40,6 @@ ol {
   list-style: none;
 }
 
-/*выше - то, что было дано в проекте, свои модификации буду писать ниже*/
-
-/*расположить все по центру !!! этот седектор перенести на строку 11, без дублей*/
-.page { 
-  display: flex; 
-  justify-items: center;
-  align-items: center;
-}
-
 /*это не костыль, а патерн*/
 .visually-hidden {
   position: absolute;
@@ -63,7 +57,7 @@ ol {
   width: 1140px;
   justify-content: space-between;
   align-items: end;
-  margin-left: 30px;
+  margin-left: 30px; /*устраняем замечания, отступы по макету*/
   margin-right: 30px;
 }
 
@@ -102,23 +96,31 @@ ol {
   overflow-y: scroll;
 }
 
-/*избавляемся от полосы прокрутки*/
-.content__list::-webkit-scrollbar {
+/*избавляемся от полосы прокрутки*/ /*замечание, что этого нет в макете, но в макете нет скролла, с болью в душе - убираю это свойство */
+/*.content__list::-webkit-scrollbar {
   display: none;
-}
+}*/
 
-.search-form{
+.search-form { /*замечание строка 108, исправлено*/
   display: flex;
   width: 711px;
   align-items: end;
 }
-.search-form__fieldset {
+
+.search-form__fieldset { /*дублирование класса по строке 113, кусок с 233 строки перенес сюда*/
   width:33%;
-  height: 54px;
+  min-height: 54px; /*замечание, строка 115, сделаем так - зададим минимальную высоту, а далее пусть растет, если много текста*/
+  border: none;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  padding-right: 40px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
 }
 
+/*замечание, строка 119. Альтернативные варианты шрифта теперь указаны везде*/
 .title {
-  font-family: 'Oswald';
+  font-family: 'Oswald', sans-serif;
   text-align: left;
   font-weight: 700;
   font-size: 75px;
@@ -131,12 +133,15 @@ ol {
   color: #545050;
 }
 
-/* margin-bottom: - у всех, кроме последнего - из задания, хотя по макету - у всех*/
 .content__list-item { 
-  margin-bottom: 33px;
   width: 397px;
   margin-top: 1px;
   margin-left: 1px;
+}
+
+/*замечание, строка 133 теперь у всех, кроме последнего, до меня дошло, что отрабатываем ситуацию, когда кнопки 'показать еще' - нет*/
+.content__list .content__list-item:not(:last-child) {
+  margin-bottom: 30px;
 }
 
 .content__card-link {
@@ -164,8 +169,8 @@ ol {
   text-decoration: none;
 }
 
-/*из макета следует, что текущая карточка имеет такой же фон как и карточка в состоянии :active*/
-.content__card-link_current, .content__card-link:active > .content__video-card {
+/*замечание строка 166*/
+.content__card-link_current, .content__card-link:active {
   background-color: #545050;
 }
 
@@ -174,6 +179,7 @@ ol {
   color: #fff;
 }
 
+/*замечание строка 175 - устранено, спасибо за подсказку. Как вариант от себя для длинного названия  хочу предложить overflow-wrap: break-word; все равно карточки могут расти в высоту*/
 .content__video-card-title {
   font-family: "Oswald", sans-serif;
   font-weight: 700;
@@ -182,6 +188,10 @@ ol {
   text-transform: uppercase;
   margin-bottom: 4px;
   margin-top: 2px;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .content__video-card-description {
@@ -194,11 +204,15 @@ ol {
 .content__video-card {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  min-height: 107px; /*ограничим минимальную высоту, на случай очень нестандартного превью*/
 }
 
+/*замечание строка 197, делаем так - ограничим ширину и высоту, а далее пускай оно само, либо только ширину, что ИМХО лучше, но пока ограничу все, что-бы в макет ложилось*/
 .content__video-card-thumbnail {
-  height: 103px;
-  width: 194px;
+  max-height: 107px;
+  max-width: 199px;
+  object-fit: contain;
+  object-position: left center; /*левый край и по центру*/
 }
 
 .button {
@@ -210,9 +224,10 @@ ol {
   font-size: 18px;
   text-align: center;
   cursor: pointer; /*это просто подсказка из задания ToDo*/
+  border: 1px solid #fff; /*замечание строка 202, согласен не разглядел, спасибо*/
 }
 
-/*cостояния кнопки*/
+/*состояния кнопки*/
 .button:hover {
   text-decoration: underline;
 }
@@ -232,21 +247,15 @@ ol {
   width: 194px;
 }
 
-.search-form__fieldset {
-  border: none;
-  font-family: 'Fira Sans Condensed';
-  padding-right: 40px;
-  font-weight: 400;
-  font-size: 18px;
-  color: #fff;
-}
+
 
 fieldset > label {
   border-bottom: 1px #fff solid;
   border-top: 1px #fff solid;
 }
 
-.search-form__textfield {
+.search-form__textfield { 
+  appearance: none; /*рекомендация, строка 247*/
   width: 225px;
   background-color: transparent;
   font-family: 'Fira Sans Condensed', sans-serif;
@@ -273,8 +282,11 @@ fieldset > label {
   outline-offset: 0px;
 }
 
-.search-form__label {
+.search-form__label { /*замечание строка 274 - выровнять содержимое по вертикали*/
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  gap: 5px;
 }
 
 .search-form__label:has(:focus-visible) {
@@ -283,22 +295,22 @@ fieldset > label {
 
 /*тут рисуем псевдочекбокс*/
 .search-form__pseudo-checkbox{
-  display: inline-block;
+  display: flex; /*замечание, строка 284, использовал inline-block; - просто потому, что в заданиях так было, использовал как готовый рецепт*/
   margin-right: 1px;
-  vertical-align: middle;
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   background-color: transparent;
   border: 1px solid #fff;
 }
 
 /*тут рисуем состояния псевдочекбокса и метки, в макете есть состояние :active для чекбокса, но нет состояния checked, считаем, что active - значит checked*/
-input[type='checkbox']:checked + .search-form__pseudo-checkbox{
-  width: 18px;
-  height: 18px;
+input[type='checkbox']:checked + .search-form__pseudo-checkbox::after{ /*замечание, строка 294 - состояния выбранных чекбоксов нужно реализовать через псевдоэлементы.*/
+  content:'';
+  width: 15px;
+  height: 15px;
   background-color: #fff;
-  outline:1px solid #1b1919;
-  outline-offset:-2px;
+  align-self: center;
+  margin-left: 1px;
 }
 
 /*surprise! если раскликаться мышкой по "чекбоксу" - происходит выделение в смысле текста, обманем систему*/
@@ -306,12 +318,12 @@ input[type='checkbox']:checked + .search-form__pseudo-checkbox{
   background-color: transparent;
 }
 
-.search-form__label-text:hover {
+.search-form__label:hover > .search-form__label-text {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-.search-form__label:has(input[type='checkbox']:focus-visible) {
+.search-form__label:has(input[type='checkbox']:focus-visible)  {
   outline: 1px solid #fff;
   outline-offset: 2px;
 }
@@ -323,7 +335,7 @@ input[type='checkbox']:checked + .search-form__pseudo-checkbox{
 }
 
 .search-form__fieldset-title {
-  font-family: 'Fira Sans Condensed';
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-weight: 400;
   font-size: 18px;
   color: #fff;
@@ -333,6 +345,7 @@ input[type='checkbox']:checked + .search-form__pseudo-checkbox{
 .more-button {
   width: 395px;
   height: 34px;
+  margin-left: 2px;
 }
 
 /*кнопка в самом низу блока с прокруткой - нижнюю линию обводки при фокусе с клавиатуры не видно, исправим так */
