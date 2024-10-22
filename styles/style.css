@@ -9,7 +9,6 @@ html {
 }
 
 .page {
-  display: flex;
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
@@ -17,8 +16,6 @@ html {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
-  justify-items: center;
-  align-items: center;
 }
 
 h1,
@@ -41,6 +38,14 @@ ol {
 }
 
 /*выше - то, что было дано в проекте, свои модификации буду записывать*/
+
+/*расположить все по центру*/
+.page { 
+  display: flex; 
+  justify-items: center;
+  align-items: center;
+}
+
 .visually-hidden {
   position: absolute;
   inline-size: 1px;
@@ -126,7 +131,8 @@ text-align: left;
   color: #545050;
 }
 
-.content__list-item { /* (у всех, кроме последнего) - из задания, хотя по макету - у всех*/
+/* (у всех, кроме последнего) - из задания, хотя по макету - у всех*/
+.content__list-item { 
   margin-bottom: 33px;
   width: 397px;
   margin-top: 1px;
