@@ -37,7 +37,7 @@ ol {
   list-style: none;
 }
 
-/*выше - то, что было дано в проекте, свои модификации буду записывать*/
+/*выше - то, что было дано в проекте, свои модификации буду писать ниже*/
 
 /*расположить все по центру*/
 .page { 
@@ -46,6 +46,7 @@ ol {
   align-items: center;
 }
 
+/*это не костыль, а патерн*/
 .visually-hidden {
   position: absolute;
   inline-size: 1px;
@@ -54,10 +55,6 @@ ol {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   white-space: nowrap;
-}
-
-.page{
-  text-align:center;
 }
 
 .content {
@@ -76,9 +73,9 @@ ol {
 }
 
 .result {
-width: 711px;
-height: 456px;
-text-align: left;
+  width: 711px;
+  height: 456px;
+  text-align: left;
 }
 
 .content__details {
@@ -103,6 +100,7 @@ text-align: left;
   overflow-y: scroll;
 }
 
+/*избавляемся от полосы прокрутки*/
 .content__list::-webkit-scrollbar {
   display: none;
 }
@@ -124,14 +122,14 @@ text-align: left;
   font-size: 75px;
   line-height: 94%;
   text-transform: uppercase;
-  color: #fff;;
+  color: #fff;
 }
 
 .content__accent {
   color: #545050;
 }
 
-/* (у всех, кроме последнего) - из задания, хотя по макету - у всех*/
+/* margin-bottom: - у всех, кроме последнего - из задания, хотя по макету - у всех*/
 .content__list-item { 
   margin-bottom: 33px;
   width: 397px;
@@ -151,6 +149,7 @@ text-align: left;
   text-underline-offset: 5%;
 }
 
+/*избавляемся от обводки по умолчанию, она немного кривая*/
 .content__card-link:focus-visible {
   outline: none;
 }
@@ -163,6 +162,7 @@ text-align: left;
   text-decoration: none;
 }
 
+/*из макета следует, что текущая карточка имеет такой же фон как и карточка в состоянии :active*/
 .content__card-link_current, .content__card-link:active > .content__video-card {
   background-color: #545050;
 }
@@ -254,12 +254,12 @@ fieldset > label {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/*избавиться от невнятной обводки с закругленным радиусом от браузера*/
+/*избавиться от невнятной обводки с закругленным радиусом от браузера по умолчанию*/
 .search-form__textfield:focus {
   outline: none;
 }
 
-/*cостояние hover имеет прироитет над focus-visible после клика (так красивее), правильно или нет - из макета не ясно*/
+/*состояние hover имеет приоритет над focus-visible после клика (так красивее), правильно или нет - из макета не ясно*/
 .search-form__textfield:not(.search-form__textfield:hover):focus-visible{
   outline: 1px solid #fff;
   outline-offset: 2px;  
@@ -279,7 +279,7 @@ fieldset > label {
   outline: none;
 }
 
-/*тут рисум псевдочекбокс*/
+/*тут рисуем псевдочекбокс*/
 .search-form__pseudo-checkbox{
   display: inline-block;
   margin-right: 1px;
@@ -290,7 +290,7 @@ fieldset > label {
   border: 1px solid #fff;
 }
 
-/*тут рисуем состояния псевдочекбокса и метки*/
+/*тут рисуем состояния псевдочекбокса и метки, в макете есть состояние :active для чекбокса, но нет состояния checked, считаем, что active - значит checked*/
 input[type='checkbox']:checked + .search-form__pseudo-checkbox{
   width: 18px;
   height: 18px;
@@ -333,6 +333,7 @@ input[type='checkbox']:checked + .search-form__pseudo-checkbox{
   height: 34px;
 }
 
+/*кнопка в самом низу блока с прокруткой - нижнюю линию обводки при фокусе с клавиатуры не видно, исправим так */
 .more-button:focus-visible {
   margin-bottom: 2px;
 }
